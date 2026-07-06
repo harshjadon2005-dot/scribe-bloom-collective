@@ -7,7 +7,10 @@ export const Route = createFileRoute("/terms")({
   head: () => ({
     meta: [
       { title: "Terms — Lordiphosa" },
-      { name: "description", content: "The rules of the road for reading and republishing Lordiphosa." },
+      {
+        name: "description",
+        content: "The rules of the road for reading and republishing Lordiphosa.",
+      },
       { property: "og:title", content: "Terms — Lordiphosa" },
       { property: "og:url", content: "/terms" },
     ],
@@ -24,7 +27,10 @@ function Terms() {
         <p className="mt-4 text-sm text-ink-soft">Last updated: July 2026</p>
 
         <div className="prose-editorial mt-10">
-          <p>All writing on Lordiphosa is published under a Creative Commons Attribution-NonCommercial 4.0 license unless otherwise noted at the foot of the piece.</p>
+          <p>
+            All writing on Lordiphosa is published under a Creative Commons
+            Attribution-NonCommercial 4.0 license unless otherwise noted at the foot of the piece.
+          </p>
           <h2>You may</h2>
           <ul>
             <li>Quote us at reasonable length with a link back.</li>
@@ -37,7 +43,11 @@ function Terms() {
             <li>Use our writing to train machine-learning models. Full stop.</li>
             <li>Impersonate our authors or the publication.</li>
           </ul>
-          <p>If you are unsure, write to <a href="mailto:letters@lordiphosa.com">letters@lordiphosa.com</a>. We are reasonable people.</p>
+          <p>
+            If you are unsure, write to{" "}
+            <a href="mailto:letters@lordiphosa.com">letters@lordiphosa.com</a>. We are reasonable
+            people.
+          </p>
         </div>
       </Container>
     </SiteLayout>

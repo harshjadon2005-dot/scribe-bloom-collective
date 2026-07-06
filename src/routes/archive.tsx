@@ -1,6 +1,6 @@
-import { createFileRoute } from '@tanstack/react-router';
-import { PlaceholderPage } from '@/components/site/PlaceholderPage';
+import { createFileRoute } from "@tanstack/react-router";
+import { PlaceholderPage } from "@/components/site/PlaceholderPage";
 
-export const Route = createFileRoute('/archive')({
-  component: () => <PlaceholderPage title="Archive" />
+export const Route = createFileRoute("/archive")({
+  component: () => <PlaceholderPage title="Archive" />,
 });

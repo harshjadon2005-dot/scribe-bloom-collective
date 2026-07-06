@@ -2,7 +2,6 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { Container } from "@/components/site/Container";
 import { ArticleVertical, ArticleCompact } from "@/components/site/ArticleCard";
-import { Newsletter } from "@/components/site/Newsletter";
 import { articles } from "@/data/articles";
 
 export const Route = createFileRoute("/trending")({
@@ -10,7 +9,10 @@ export const Route = createFileRoute("/trending")({
   head: () => ({
     meta: [
       { title: "Trending — Lordiphosa" },
-      { name: "description", content: "The most-read technology, AI, and engineering stories on Lordiphosa this week." },
+      {
+        name: "description",
+        content: "The most-read technology, AI, and engineering stories on Lordiphosa this week.",
+      },
       { property: "og:title", content: "Trending — Lordiphosa" },
       { property: "og:url", content: "/trending" },
     ],
@@ -55,8 +57,6 @@ function Trending() {
           </div>
         </Container>
       </div>
-
-      <Newsletter />
     </SiteLayout>
   );
 }

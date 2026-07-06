@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { Container } from "@/components/site/Container";
-import { Newsletter } from "@/components/site/Newsletter";
 import { authors } from "@/data/articles";
 
 export const Route = createFileRoute("/about")({
@@ -30,25 +29,39 @@ function About() {
       <Container size="prose" className="py-16">
         <div className="prose-editorial">
           <p>
-            Lordiphosa is a technology publication. We report on artificial intelligence, software engineering, cybersecurity, startups, and the infrastructure quietly holding the modern world together.
+            Lordiphosa is a technology publication. We report on artificial intelligence, software
+            engineering, cybersecurity, startups, and the infrastructure quietly holding the modern
+            world together.
           </p>
           <p>
-            We publish essays, field reports, technical guides, and interviews written by practitioners — people who have shipped the software they are writing about. We are slower than the news cycle on purpose, and we would rather be useful in six months than viral this afternoon.
+            We publish essays, field reports, technical guides, and interviews written by
+            practitioners — people who have shipped the software they are writing about. We are
+            slower than the news cycle on purpose, and we would rather be useful in six months than
+            viral this afternoon.
           </p>
           <h2>What we believe</h2>
           <p>
-            The interesting questions in technology are almost never the ones being loudly debated on any given day. They are the ones a working engineer is quietly wrestling with at their desk. Our job is to find those questions, report them out honestly, and explain why they matter.
+            The interesting questions in technology are almost never the ones being loudly debated
+            on any given day. They are the ones a working engineer is quietly wrestling with at
+            their desk. Our job is to find those questions, report them out honestly, and explain
+            why they matter.
           </p>
           <blockquote>
-            "We are not interested in being first to a headline. We are interested in being right, and in explaining why it matters."
+            "We are not interested in being first to a headline. We are interested in being right,
+            and in explaining why it matters."
           </blockquote>
           <h2>How we make money</h2>
           <p>
-            Reader support, a small number of vetted job listings, and the discipline of low overheads. We do not accept sponsored posts. We do not run tracking scripts. If we ever change our minds about either, we will tell you plainly on this page first.
+            Reader support, a small number of vetted job listings, and the discipline of low
+            overheads. We do not accept sponsored posts. We do not run tracking scripts. If we ever
+            change our minds about either, we will tell you plainly on this page first.
           </p>
           <h2>Submissions</h2>
           <p>
-            We read every pitch and publish very few. If you have shipped something interesting and can write about it clearly, send a two-paragraph proposal to <a href="mailto:pitches@lordiphosa.com">pitches@lordiphosa.com</a>. Expect a reply within two weeks.
+            We read every pitch and publish very few. If you have shipped something interesting and
+            can write about it clearly, send a two-paragraph proposal to{" "}
+            <a href="mailto:pitches@lordiphosa.com">pitches@lordiphosa.com</a>. Expect a reply
+            within two weeks.
           </p>
         </div>
       </Container>
@@ -71,8 +84,6 @@ function About() {
           ))}
         </div>
       </Container>
-
-      <Newsletter />
     </SiteLayout>
   );
 }

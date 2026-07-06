@@ -24,15 +24,32 @@ function Privacy() {
         <p className="mt-4 text-sm text-ink-soft">Last updated: July 2026</p>
 
         <div className="prose-editorial mt-10">
-          <p>Lordiphosa is designed to be readable without giving anything up. We collect only what is necessary to publish and to send the newsletter you asked for.</p>
+          <p>
+            Lordiphosa is designed to be readable without giving anything up. We collect only what
+            is necessary to publish and to send the newsletter you asked for.
+          </p>
           <h2>What we collect</h2>
-          <p>If you subscribe to the newsletter, we store your email address and the date you subscribed. That is all.</p>
+          <p>
+            If you subscribe to the newsletter, we store your email address and the date you
+            subscribed. That is all.
+          </p>
           <h2>What we do not do</h2>
-          <p>We do not use third-party analytics, tracking pixels, behavioural advertising, or fingerprinting. We do not sell, rent, or share reader data. If you never subscribe, we hold nothing about you.</p>
+          <p>
+            We do not use third-party analytics, tracking pixels, behavioural advertising, or
+            fingerprinting. We do not sell, rent, or share reader data. If you never subscribe, we
+            hold nothing about you.
+          </p>
           <h2>Cookies</h2>
-          <p>We use one cookie to remember your dark-mode preference. It expires after a year and is never sent to a server.</p>
+          <p>
+            We use one cookie to remember your dark-mode preference. It expires after a year and is
+            never sent to a server.
+          </p>
           <h2>Your rights</h2>
-          <p>You can unsubscribe at any time from the footer of any newsletter, or by writing to <a href="mailto:privacy@lordiphosa.com">privacy@lordiphosa.com</a>. On request we will delete every trace of you within seven days.</p>
+          <p>
+            You can unsubscribe at any time from the footer of any newsletter, or by writing to{" "}
+            <a href="mailto:privacy@lordiphosa.com">privacy@lordiphosa.com</a>. On request we will
+            delete every trace of you within seven days.
+          </p>
         </div>
       </Container>
     </SiteLayout>

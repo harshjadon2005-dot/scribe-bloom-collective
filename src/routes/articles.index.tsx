@@ -4,15 +4,30 @@ import { SiteLayout } from "@/components/site/SiteLayout";
 import { Container } from "@/components/site/Container";
 import { ArticleVertical, ArticleRow, ArticleLandscape } from "@/components/site/ArticleCard";
 import { ArticleFAQ } from "@/components/site/ArticleFAQ";
-import { Newsletter } from "@/components/site/Newsletter";
 import { LayoutGrid, List } from "lucide-react";
 import { getArticles, getTopics } from "@/api";
 
 const generalFaqs = [
-  { question: "Is this reporting or opinion?", answer: "Both, clearly labeled. Field reports are sourced and fact-checked; essays are argued and signed." },
-  { question: "How do you choose what to cover?", answer: "We follow the practitioners. If working engineers, researchers, and founders are quietly wrestling with a question, that is usually where the interesting story lives." },
-  { question: "Can I republish these pieces?", answer: "For non-commercial use with attribution and a link back, yes. For anything else, write to us first." },
-  { question: "How often do you publish new articles?", answer: "We publish one considered essay each week on Sundays, along with occasional field notes during the week." }
+  {
+    question: "Is this reporting or opinion?",
+    answer:
+      "Both, clearly labeled. Field reports are sourced and fact-checked; essays are argued and signed.",
+  },
+  {
+    question: "How do you choose what to cover?",
+    answer:
+      "We follow the practitioners. If working engineers, researchers, and founders are quietly wrestling with a question, that is usually where the interesting story lives.",
+  },
+  {
+    question: "Can I republish these pieces?",
+    answer:
+      "For non-commercial use with attribution and a link back, yes. For anything else, write to us first.",
+  },
+  {
+    question: "How often do you publish new articles?",
+    answer:
+      "We publish one considered essay each week on Sundays, along with occasional field notes during the week.",
+  },
 ];
 
 export const Route = createFileRoute("/articles/")({
@@ -25,7 +40,10 @@ export const Route = createFileRoute("/articles/")({
   head: () => ({
     meta: [
       { title: "Articles — Lordiphosa" },
-      { name: "description", content: "Every essay, guide, interview, and field note published by Lordiphosa." },
+      {
+        name: "description",
+        content: "Every essay, guide, interview, and field note published by Lordiphosa.",
+      },
       { property: "og:title", content: "Articles — Lordiphosa" },
       { property: "og:url", content: "/articles" },
     ],
@@ -59,7 +77,8 @@ function ArticlesIndex() {
           Every piece we have ever published.
         </h1>
         <p className="mt-6 text-lg text-ink-soft max-w-xl leading-relaxed">
-          {articles.length} essays, guides, interviews and field notes across {categories.length} subjects. Sorted, filtered, and open.
+          {articles.length} essays, guides, interviews and field notes across {categories.length}{" "}
+          subjects. Sorted, filtered, and open.
         </p>
       </Container>
 
@@ -145,22 +164,30 @@ function ArticlesIndex() {
 
         {/* Pagination */}
         <nav className="mt-20 flex items-center justify-between rule-t pt-6 text-sm">
-          <button className="text-ink-soft cursor-not-allowed" disabled>← Previous</button>
+          <button className="text-ink-soft cursor-not-allowed" disabled>
+            ← Previous
+          </button>
           <div className="flex gap-2 font-mono">
             <span className="px-3 py-1 bg-foreground text-background rounded-full">1</span>
-            <Link to="/articles" className="px-3 py-1 hover:bg-secondary rounded-full">2</Link>
-            <Link to="/articles" className="px-3 py-1 hover:bg-secondary rounded-full">3</Link>
+            <Link to="/articles" className="px-3 py-1 hover:bg-secondary rounded-full">
+              2
+            </Link>
+            <Link to="/articles" className="px-3 py-1 hover:bg-secondary rounded-full">
+              3
+            </Link>
             <span className="px-3 py-1 text-ink-soft">…</span>
-            <Link to="/articles" className="px-3 py-1 hover:bg-secondary rounded-full">7</Link>
+            <Link to="/articles" className="px-3 py-1 hover:bg-secondary rounded-full">
+              7
+            </Link>
           </div>
-          <Link to="/articles" className="hover:text-accent transition-colors">Next →</Link>
+          <Link to="/articles" className="hover:text-accent transition-colors">
+            Next →
+          </Link>
         </nav>
       </Container>
 
       {/* FAQ Component */}
       <ArticleFAQ faqs={generalFaqs} />
-
-      <Newsletter />
     </SiteLayout>
   );
 }

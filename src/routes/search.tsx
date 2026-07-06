@@ -19,7 +19,7 @@ export const Route = createFileRoute("/search")({
   loader: async () => {
     const articles = await getArticles();
     return { articles };
-  }
+  },
 });
 
 const recent = ["slow work", "typography", "morning pages"];
@@ -31,7 +31,7 @@ function SearchPage() {
     const t = q.trim().toLowerCase();
     if (!t) return [];
     return articles.filter((a) =>
-      [a.title, a.subtitle, a.excerpt, ...a.tags].some((s) => s.toLowerCase().includes(t))
+      [a.title, a.subtitle, a.excerpt, ...a.tags].some((s) => s.toLowerCase().includes(t)),
     );
   }, [q]);
 
@@ -52,7 +52,14 @@ function SearchPage() {
             placeholder="Search essays, guides, tags…"
             className="flex-1 bg-transparent outline-none text-2xl sm:text-3xl font-display placeholder:text-ink-soft/50"
           />
-          {q && <button onClick={() => setQ("")} className="text-sm text-ink-soft hover:text-foreground">Clear</button>}
+          {q && (
+            <button
+              onClick={() => setQ("")}
+              className="text-sm text-ink-soft hover:text-foreground"
+            >
+              Clear
+            </button>
+          )}
         </div>
       </Container>
 
@@ -60,11 +67,16 @@ function SearchPage() {
         {!q ? (
           <div className="grid md:grid-cols-2 gap-14 mt-16">
             <div>
-              <div className="eyebrow mb-4" style={{ color: "var(--ink-soft)" }}>Recent searches</div>
+              <div className="eyebrow mb-4" style={{ color: "var(--ink-soft)" }}>
+                Recent searches
+              </div>
               <ul className="space-y-3">
                 {recent.map((r) => (
                   <li key={r}>
-                    <button onClick={() => setQ(r)} className="font-display text-2xl hover:text-accent transition-colors">
+                    <button
+                      onClick={() => setQ(r)}
+                      className="font-display text-2xl hover:text-accent transition-colors"
+                    >
                       {r}
                     </button>
                   </li>
@@ -72,7 +84,9 @@ function SearchPage() {
               </ul>
             </div>
             <div>
-              <div className="eyebrow mb-4" style={{ color: "var(--ink-soft)" }}>Popular topics</div>
+              <div className="eyebrow mb-4" style={{ color: "var(--ink-soft)" }}>
+                Popular topics
+              </div>
               <div className="flex flex-wrap gap-2">
                 {categories.map((c) => (
                   <Link
@@ -92,13 +106,19 @@ function SearchPage() {
             <div className="eyebrow">No results</div>
             <h2 className="mt-3 font-display text-4xl">Nothing matched "{q}".</h2>
             <p className="mt-3 text-ink-soft">Try a shorter query, or browse by subject.</p>
-            <Link to="/categories" className="mt-6 inline-block border-b border-accent pb-1">Browse categories</Link>
+            <Link to="/categories" className="mt-6 inline-block border-b border-accent pb-1">
+              Browse categories
+            </Link>
           </div>
         ) : (
           <div className="mt-10">
-            <div className="text-sm text-ink-soft mb-4">{results.length} result{results.length === 1 ? "" : "s"}</div>
+            <div className="text-sm text-ink-soft mb-4">
+              {results.length} result{results.length === 1 ? "" : "s"}
+            </div>
             <div className="max-w-4xl">
-              {results.map((a) => <ArticleRow key={a.slug} article={a} />)}
+              {results.map((a) => (
+                <ArticleRow key={a.slug} article={a} />
+              ))}
             </div>
           </div>
         )}

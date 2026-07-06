@@ -78,11 +78,19 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Lordiphosa — Modern knowledge for a technology era" },
-      { name: "description", content: "Considered reporting on AI, software engineering, cybersecurity, startups, and the technology reshaping the next decade." },
+      {
+        name: "description",
+        content:
+          "Considered reporting on AI, software engineering, cybersecurity, startups, and the technology reshaping the next decade.",
+      },
       { name: "author", content: "Lordiphosa" },
       { property: "og:site_name", content: "Lordiphosa" },
       { property: "og:title", content: "Lordiphosa — Modern knowledge for a technology era" },
-      { property: "og:description", content: "Considered reporting on AI, software engineering, cybersecurity, startups, and the technology reshaping the next decade." },
+      {
+        property: "og:description",
+        content:
+          "Considered reporting on AI, software engineering, cybersecurity, startups, and the technology reshaping the next decade.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@lordiphosa" },
