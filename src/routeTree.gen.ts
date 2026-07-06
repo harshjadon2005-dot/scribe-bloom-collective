@@ -10,17 +10,30 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TrendingRouteImport } from './routes/trending'
-import { Route as TopicsRouteImport } from './routes/topics'
 import { Route as TermsRouteImport } from './routes/terms'
+import { Route as StyleGuideRouteImport } from './routes/style-guide'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as SitemapRouteImport } from './routes/sitemap'
 import { Route as SearchRouteImport } from './routes/search'
+import { Route as RssRouteImport } from './routes/rss'
 import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as NewsletterRouteImport } from './routes/newsletter'
+import { Route as MastheadRouteImport } from './routes/masthead'
+import { Route as FaqRouteImport } from './routes/faq'
+import { Route as EditorialStandardsRouteImport } from './routes/editorial-standards'
+import { Route as CreditsRouteImport } from './routes/credits'
 import { Route as ContactRouteImport } from './routes/contact'
-import { Route as CategoriesRouteImport } from './routes/categories'
-import { Route as AuthorsRouteImport } from './routes/authors'
-import { Route as ArticlesRouteImport } from './routes/articles'
+import { Route as CollectionsRouteImport } from './routes/collections'
+import { Route as ChangelogRouteImport } from './routes/changelog'
+import { Route as CareersRouteImport } from './routes/careers'
+import { Route as ArchiveRouteImport } from './routes/archive'
+import { Route as AccessibilityRouteImport } from './routes/accessibility'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as TopicsIndexRouteImport } from './routes/topics.index'
+import { Route as AuthorsIndexRouteImport } from './routes/authors.index'
+import { Route as ArticlesIndexRouteImport } from './routes/articles.index'
+import { Route as TopicsSlugRouteImport } from './routes/topics.$slug'
 import { Route as CategoriesSlugRouteImport } from './routes/categories.$slug'
 import { Route as AuthorsSlugRouteImport } from './routes/authors.$slug'
 import { Route as ArticlesSlugRouteImport } from './routes/articles.$slug'
@@ -30,14 +43,14 @@ const TrendingRoute = TrendingRouteImport.update({
   path: '/trending',
   getParentRoute: () => rootRouteImport,
 } as any)
-const TopicsRoute = TopicsRouteImport.update({
-  id: '/topics',
-  path: '/topics',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
   path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StyleGuideRoute = StyleGuideRouteImport.update({
+  id: '/style-guide',
+  path: '/style-guide',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -45,9 +58,19 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SitemapRoute = SitemapRouteImport.update({
+  id: '/sitemap',
+  path: '/sitemap',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SearchRoute = SearchRouteImport.update({
   id: '/search',
   path: '/search',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RssRoute = RssRouteImport.update({
+  id: '/rss',
+  path: '/rss',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrivacyRoute = PrivacyRouteImport.update({
@@ -55,24 +78,59 @@ const PrivacyRoute = PrivacyRouteImport.update({
   path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
+const NewsletterRoute = NewsletterRouteImport.update({
+  id: '/newsletter',
+  path: '/newsletter',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MastheadRoute = MastheadRouteImport.update({
+  id: '/masthead',
+  path: '/masthead',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EditorialStandardsRoute = EditorialStandardsRouteImport.update({
+  id: '/editorial-standards',
+  path: '/editorial-standards',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CreditsRoute = CreditsRouteImport.update({
+  id: '/credits',
+  path: '/credits',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
-const CategoriesRoute = CategoriesRouteImport.update({
-  id: '/categories',
-  path: '/categories',
+const CollectionsRoute = CollectionsRouteImport.update({
+  id: '/collections',
+  path: '/collections',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AuthorsRoute = AuthorsRouteImport.update({
-  id: '/authors',
-  path: '/authors',
+const ChangelogRoute = ChangelogRouteImport.update({
+  id: '/changelog',
+  path: '/changelog',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ArticlesRoute = ArticlesRouteImport.update({
-  id: '/articles',
-  path: '/articles',
+const CareersRoute = CareersRouteImport.update({
+  id: '/careers',
+  path: '/careers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArchiveRoute = ArchiveRouteImport.update({
+  id: '/archive',
+  path: '/archive',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AccessibilityRoute = AccessibilityRouteImport.update({
+  id: '/accessibility',
+  path: '/accessibility',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -85,141 +143,255 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TopicsIndexRoute = TopicsIndexRouteImport.update({
+  id: '/topics/',
+  path: '/topics/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthorsIndexRoute = AuthorsIndexRouteImport.update({
+  id: '/authors/',
+  path: '/authors/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArticlesIndexRoute = ArticlesIndexRouteImport.update({
+  id: '/articles/',
+  path: '/articles/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TopicsSlugRoute = TopicsSlugRouteImport.update({
+  id: '/topics/$slug',
+  path: '/topics/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CategoriesSlugRoute = CategoriesSlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
-  getParentRoute: () => CategoriesRoute,
+  id: '/categories/$slug',
+  path: '/categories/$slug',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const AuthorsSlugRoute = AuthorsSlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
-  getParentRoute: () => AuthorsRoute,
+  id: '/authors/$slug',
+  path: '/authors/$slug',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const ArticlesSlugRoute = ArticlesSlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
-  getParentRoute: () => ArticlesRoute,
+  id: '/articles/$slug',
+  path: '/articles/$slug',
+  getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/articles': typeof ArticlesRouteWithChildren
-  '/authors': typeof AuthorsRouteWithChildren
-  '/categories': typeof CategoriesRouteWithChildren
+  '/accessibility': typeof AccessibilityRoute
+  '/archive': typeof ArchiveRoute
+  '/careers': typeof CareersRoute
+  '/changelog': typeof ChangelogRoute
+  '/collections': typeof CollectionsRoute
   '/contact': typeof ContactRoute
+  '/credits': typeof CreditsRoute
+  '/editorial-standards': typeof EditorialStandardsRoute
+  '/faq': typeof FaqRoute
+  '/masthead': typeof MastheadRoute
+  '/newsletter': typeof NewsletterRoute
   '/privacy': typeof PrivacyRoute
+  '/rss': typeof RssRoute
   '/search': typeof SearchRoute
+  '/sitemap': typeof SitemapRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/style-guide': typeof StyleGuideRoute
   '/terms': typeof TermsRoute
-  '/topics': typeof TopicsRoute
   '/trending': typeof TrendingRoute
   '/articles/$slug': typeof ArticlesSlugRoute
   '/authors/$slug': typeof AuthorsSlugRoute
   '/categories/$slug': typeof CategoriesSlugRoute
+  '/topics/$slug': typeof TopicsSlugRoute
+  '/articles/': typeof ArticlesIndexRoute
+  '/authors/': typeof AuthorsIndexRoute
+  '/topics/': typeof TopicsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/articles': typeof ArticlesRouteWithChildren
-  '/authors': typeof AuthorsRouteWithChildren
-  '/categories': typeof CategoriesRouteWithChildren
+  '/accessibility': typeof AccessibilityRoute
+  '/archive': typeof ArchiveRoute
+  '/careers': typeof CareersRoute
+  '/changelog': typeof ChangelogRoute
+  '/collections': typeof CollectionsRoute
   '/contact': typeof ContactRoute
+  '/credits': typeof CreditsRoute
+  '/editorial-standards': typeof EditorialStandardsRoute
+  '/faq': typeof FaqRoute
+  '/masthead': typeof MastheadRoute
+  '/newsletter': typeof NewsletterRoute
   '/privacy': typeof PrivacyRoute
+  '/rss': typeof RssRoute
   '/search': typeof SearchRoute
+  '/sitemap': typeof SitemapRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/style-guide': typeof StyleGuideRoute
   '/terms': typeof TermsRoute
-  '/topics': typeof TopicsRoute
   '/trending': typeof TrendingRoute
   '/articles/$slug': typeof ArticlesSlugRoute
   '/authors/$slug': typeof AuthorsSlugRoute
   '/categories/$slug': typeof CategoriesSlugRoute
+  '/topics/$slug': typeof TopicsSlugRoute
+  '/articles': typeof ArticlesIndexRoute
+  '/authors': typeof AuthorsIndexRoute
+  '/topics': typeof TopicsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/articles': typeof ArticlesRouteWithChildren
-  '/authors': typeof AuthorsRouteWithChildren
-  '/categories': typeof CategoriesRouteWithChildren
+  '/accessibility': typeof AccessibilityRoute
+  '/archive': typeof ArchiveRoute
+  '/careers': typeof CareersRoute
+  '/changelog': typeof ChangelogRoute
+  '/collections': typeof CollectionsRoute
   '/contact': typeof ContactRoute
+  '/credits': typeof CreditsRoute
+  '/editorial-standards': typeof EditorialStandardsRoute
+  '/faq': typeof FaqRoute
+  '/masthead': typeof MastheadRoute
+  '/newsletter': typeof NewsletterRoute
   '/privacy': typeof PrivacyRoute
+  '/rss': typeof RssRoute
   '/search': typeof SearchRoute
+  '/sitemap': typeof SitemapRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/style-guide': typeof StyleGuideRoute
   '/terms': typeof TermsRoute
-  '/topics': typeof TopicsRoute
   '/trending': typeof TrendingRoute
   '/articles/$slug': typeof ArticlesSlugRoute
   '/authors/$slug': typeof AuthorsSlugRoute
   '/categories/$slug': typeof CategoriesSlugRoute
+  '/topics/$slug': typeof TopicsSlugRoute
+  '/articles/': typeof ArticlesIndexRoute
+  '/authors/': typeof AuthorsIndexRoute
+  '/topics/': typeof TopicsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/about'
-    | '/articles'
-    | '/authors'
-    | '/categories'
+    | '/accessibility'
+    | '/archive'
+    | '/careers'
+    | '/changelog'
+    | '/collections'
     | '/contact'
+    | '/credits'
+    | '/editorial-standards'
+    | '/faq'
+    | '/masthead'
+    | '/newsletter'
     | '/privacy'
+    | '/rss'
     | '/search'
+    | '/sitemap'
     | '/sitemap.xml'
+    | '/style-guide'
     | '/terms'
-    | '/topics'
     | '/trending'
     | '/articles/$slug'
     | '/authors/$slug'
     | '/categories/$slug'
+    | '/topics/$slug'
+    | '/articles/'
+    | '/authors/'
+    | '/topics/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
-    | '/articles'
-    | '/authors'
-    | '/categories'
+    | '/accessibility'
+    | '/archive'
+    | '/careers'
+    | '/changelog'
+    | '/collections'
     | '/contact'
+    | '/credits'
+    | '/editorial-standards'
+    | '/faq'
+    | '/masthead'
+    | '/newsletter'
     | '/privacy'
+    | '/rss'
     | '/search'
+    | '/sitemap'
     | '/sitemap.xml'
+    | '/style-guide'
     | '/terms'
-    | '/topics'
     | '/trending'
     | '/articles/$slug'
     | '/authors/$slug'
     | '/categories/$slug'
+    | '/topics/$slug'
+    | '/articles'
+    | '/authors'
+    | '/topics'
   id:
     | '__root__'
     | '/'
     | '/about'
-    | '/articles'
-    | '/authors'
-    | '/categories'
+    | '/accessibility'
+    | '/archive'
+    | '/careers'
+    | '/changelog'
+    | '/collections'
     | '/contact'
+    | '/credits'
+    | '/editorial-standards'
+    | '/faq'
+    | '/masthead'
+    | '/newsletter'
     | '/privacy'
+    | '/rss'
     | '/search'
+    | '/sitemap'
     | '/sitemap.xml'
+    | '/style-guide'
     | '/terms'
-    | '/topics'
     | '/trending'
     | '/articles/$slug'
     | '/authors/$slug'
     | '/categories/$slug'
+    | '/topics/$slug'
+    | '/articles/'
+    | '/authors/'
+    | '/topics/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
-  ArticlesRoute: typeof ArticlesRouteWithChildren
-  AuthorsRoute: typeof AuthorsRouteWithChildren
-  CategoriesRoute: typeof CategoriesRouteWithChildren
+  AccessibilityRoute: typeof AccessibilityRoute
+  ArchiveRoute: typeof ArchiveRoute
+  CareersRoute: typeof CareersRoute
+  ChangelogRoute: typeof ChangelogRoute
+  CollectionsRoute: typeof CollectionsRoute
   ContactRoute: typeof ContactRoute
+  CreditsRoute: typeof CreditsRoute
+  EditorialStandardsRoute: typeof EditorialStandardsRoute
+  FaqRoute: typeof FaqRoute
+  MastheadRoute: typeof MastheadRoute
+  NewsletterRoute: typeof NewsletterRoute
   PrivacyRoute: typeof PrivacyRoute
+  RssRoute: typeof RssRoute
   SearchRoute: typeof SearchRoute
+  SitemapRoute: typeof SitemapRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  StyleGuideRoute: typeof StyleGuideRoute
   TermsRoute: typeof TermsRoute
-  TopicsRoute: typeof TopicsRoute
   TrendingRoute: typeof TrendingRoute
+  ArticlesSlugRoute: typeof ArticlesSlugRoute
+  AuthorsSlugRoute: typeof AuthorsSlugRoute
+  CategoriesSlugRoute: typeof CategoriesSlugRoute
+  TopicsSlugRoute: typeof TopicsSlugRoute
+  ArticlesIndexRoute: typeof ArticlesIndexRoute
+  AuthorsIndexRoute: typeof AuthorsIndexRoute
+  TopicsIndexRoute: typeof TopicsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -231,18 +403,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TrendingRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/topics': {
-      id: '/topics'
-      path: '/topics'
-      fullPath: '/topics'
-      preLoaderRoute: typeof TopicsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/terms': {
       id: '/terms'
       path: '/terms'
       fullPath: '/terms'
       preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/style-guide': {
+      id: '/style-guide'
+      path: '/style-guide'
+      fullPath: '/style-guide'
+      preLoaderRoute: typeof StyleGuideRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sitemap.xml': {
@@ -252,11 +424,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sitemap': {
+      id: '/sitemap'
+      path: '/sitemap'
+      fullPath: '/sitemap'
+      preLoaderRoute: typeof SitemapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/search': {
       id: '/search'
       path: '/search'
       fullPath: '/search'
       preLoaderRoute: typeof SearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/rss': {
+      id: '/rss'
+      path: '/rss'
+      fullPath: '/rss'
+      preLoaderRoute: typeof RssRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/privacy': {
@@ -266,6 +452,41 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/newsletter': {
+      id: '/newsletter'
+      path: '/newsletter'
+      fullPath: '/newsletter'
+      preLoaderRoute: typeof NewsletterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/masthead': {
+      id: '/masthead'
+      path: '/masthead'
+      fullPath: '/masthead'
+      preLoaderRoute: typeof MastheadRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/editorial-standards': {
+      id: '/editorial-standards'
+      path: '/editorial-standards'
+      fullPath: '/editorial-standards'
+      preLoaderRoute: typeof EditorialStandardsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/credits': {
+      id: '/credits'
+      path: '/credits'
+      fullPath: '/credits'
+      preLoaderRoute: typeof CreditsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contact': {
       id: '/contact'
       path: '/contact'
@@ -273,25 +494,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/categories': {
-      id: '/categories'
-      path: '/categories'
-      fullPath: '/categories'
-      preLoaderRoute: typeof CategoriesRouteImport
+    '/collections': {
+      id: '/collections'
+      path: '/collections'
+      fullPath: '/collections'
+      preLoaderRoute: typeof CollectionsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/authors': {
-      id: '/authors'
-      path: '/authors'
-      fullPath: '/authors'
-      preLoaderRoute: typeof AuthorsRouteImport
+    '/changelog': {
+      id: '/changelog'
+      path: '/changelog'
+      fullPath: '/changelog'
+      preLoaderRoute: typeof ChangelogRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/articles': {
-      id: '/articles'
-      path: '/articles'
-      fullPath: '/articles'
-      preLoaderRoute: typeof ArticlesRouteImport
+    '/careers': {
+      id: '/careers'
+      path: '/careers'
+      fullPath: '/careers'
+      preLoaderRoute: typeof CareersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/archive': {
+      id: '/archive'
+      path: '/archive'
+      fullPath: '/archive'
+      preLoaderRoute: typeof ArchiveRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/accessibility': {
+      id: '/accessibility'
+      path: '/accessibility'
+      fullPath: '/accessibility'
+      preLoaderRoute: typeof AccessibilityRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -308,79 +543,98 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/topics/': {
+      id: '/topics/'
+      path: '/topics'
+      fullPath: '/topics/'
+      preLoaderRoute: typeof TopicsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/authors/': {
+      id: '/authors/'
+      path: '/authors'
+      fullPath: '/authors/'
+      preLoaderRoute: typeof AuthorsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/articles/': {
+      id: '/articles/'
+      path: '/articles'
+      fullPath: '/articles/'
+      preLoaderRoute: typeof ArticlesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/topics/$slug': {
+      id: '/topics/$slug'
+      path: '/topics/$slug'
+      fullPath: '/topics/$slug'
+      preLoaderRoute: typeof TopicsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/categories/$slug': {
       id: '/categories/$slug'
-      path: '/$slug'
+      path: '/categories/$slug'
       fullPath: '/categories/$slug'
       preLoaderRoute: typeof CategoriesSlugRouteImport
-      parentRoute: typeof CategoriesRoute
+      parentRoute: typeof rootRouteImport
     }
     '/authors/$slug': {
       id: '/authors/$slug'
-      path: '/$slug'
+      path: '/authors/$slug'
       fullPath: '/authors/$slug'
       preLoaderRoute: typeof AuthorsSlugRouteImport
-      parentRoute: typeof AuthorsRoute
+      parentRoute: typeof rootRouteImport
     }
     '/articles/$slug': {
       id: '/articles/$slug'
-      path: '/$slug'
+      path: '/articles/$slug'
       fullPath: '/articles/$slug'
       preLoaderRoute: typeof ArticlesSlugRouteImport
-      parentRoute: typeof ArticlesRoute
+      parentRoute: typeof rootRouteImport
     }
   }
 }
 
-interface ArticlesRouteChildren {
-  ArticlesSlugRoute: typeof ArticlesSlugRoute
-}
-
-const ArticlesRouteChildren: ArticlesRouteChildren = {
-  ArticlesSlugRoute: ArticlesSlugRoute,
-}
-
-const ArticlesRouteWithChildren = ArticlesRoute._addFileChildren(
-  ArticlesRouteChildren,
-)
-
-interface AuthorsRouteChildren {
-  AuthorsSlugRoute: typeof AuthorsSlugRoute
-}
-
-const AuthorsRouteChildren: AuthorsRouteChildren = {
-  AuthorsSlugRoute: AuthorsSlugRoute,
-}
-
-const AuthorsRouteWithChildren =
-  AuthorsRoute._addFileChildren(AuthorsRouteChildren)
-
-interface CategoriesRouteChildren {
-  CategoriesSlugRoute: typeof CategoriesSlugRoute
-}
-
-const CategoriesRouteChildren: CategoriesRouteChildren = {
-  CategoriesSlugRoute: CategoriesSlugRoute,
-}
-
-const CategoriesRouteWithChildren = CategoriesRoute._addFileChildren(
-  CategoriesRouteChildren,
-)
-
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
-  ArticlesRoute: ArticlesRouteWithChildren,
-  AuthorsRoute: AuthorsRouteWithChildren,
-  CategoriesRoute: CategoriesRouteWithChildren,
+  AccessibilityRoute: AccessibilityRoute,
+  ArchiveRoute: ArchiveRoute,
+  CareersRoute: CareersRoute,
+  ChangelogRoute: ChangelogRoute,
+  CollectionsRoute: CollectionsRoute,
   ContactRoute: ContactRoute,
+  CreditsRoute: CreditsRoute,
+  EditorialStandardsRoute: EditorialStandardsRoute,
+  FaqRoute: FaqRoute,
+  MastheadRoute: MastheadRoute,
+  NewsletterRoute: NewsletterRoute,
   PrivacyRoute: PrivacyRoute,
+  RssRoute: RssRoute,
   SearchRoute: SearchRoute,
+  SitemapRoute: SitemapRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  StyleGuideRoute: StyleGuideRoute,
   TermsRoute: TermsRoute,
-  TopicsRoute: TopicsRoute,
   TrendingRoute: TrendingRoute,
+  ArticlesSlugRoute: ArticlesSlugRoute,
+  AuthorsSlugRoute: AuthorsSlugRoute,
+  CategoriesSlugRoute: CategoriesSlugRoute,
+  TopicsSlugRoute: TopicsSlugRoute,
+  ArticlesIndexRoute: ArticlesIndexRoute,
+  AuthorsIndexRoute: AuthorsIndexRoute,
+  TopicsIndexRoute: TopicsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

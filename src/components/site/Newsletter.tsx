@@ -1,43 +1,57 @@
 import { Container } from "./Container";
+import { Check } from "lucide-react";
 
 export function Newsletter({ compact = false }: { compact?: boolean }) {
   return (
-    <section className={compact ? "" : "mt-24"}>
+    <section className={`bg-secondary/30 border-y border-border ${compact ? "" : "mt-24"}`}>
       <Container size={compact ? "default" : "wide"}>
-        <div className="grid md:grid-cols-12 gap-8 items-end rule-t rule-b py-16">
-          <div className="md:col-span-7">
-            <div className="eyebrow mb-4">The Dispatch</div>
-            <h3 className="font-display text-4xl sm:text-5xl leading-[1.05] tracking-tight max-w-xl">
-              The week in technology, explained on Sundays.
-            </h3>
-            <p className="mt-5 text-ink-soft max-w-lg leading-relaxed">
-              One considered essay each week, plus five stories worth your attention across AI, engineering, and startups. No tracking, no ads, no obligation. Forty-two thousand builders already inside.
-            </p>
-          </div>
+        <div className="py-24 text-center max-w-4xl mx-auto flex flex-col items-center">
+          <div className="eyebrow mb-6 uppercase tracking-[0.2em] text-[10px] font-semibold text-accent">The Dispatch</div>
+          <h3 className="font-display text-5xl md:text-7xl leading-[0.95] tracking-tight mb-8">
+            Stay Ahead of Technology
+          </h3>
+          <p className="text-xl text-ink-soft leading-relaxed max-w-2xl mb-12">
+            Receive carefully curated articles covering AI, software engineering, cybersecurity, startups, cloud computing, semiconductors, programming, and emerging technologies.
+          </p>
+          
           <form
             onSubmit={(e) => e.preventDefault()}
-            className="md:col-span-5 flex flex-col gap-3"
+            className="w-full max-w-lg mb-8 relative group"
           >
-            <label htmlFor="nl" className="sr-only">Email address</label>
-            <div className="flex rule-b border-foreground focus-within:border-accent transition-colors">
+            <label htmlFor="nl-email" className="sr-only">Email address</label>
+            <div className="relative">
               <input
-                id="nl"
+                id="nl-email"
                 type="email"
                 required
-                placeholder="you@company.com"
-                className="flex-1 bg-transparent py-3 text-lg outline-none placeholder:text-ink-soft/60"
+                placeholder="Enter your email address"
+                className="w-full bg-background border border-border rounded-none py-4 pl-6 pr-32 text-lg focus:outline-none focus:border-accent transition-colors shadow-sm placeholder:text-ink-soft/50"
               />
               <button
                 type="submit"
-                className="ml-4 text-sm font-medium tracking-wide hover:text-accent transition-colors"
+                className="absolute right-2 top-2 bottom-2 bg-foreground text-background font-medium px-6 text-sm hover:bg-accent transition-colors"
               >
-                Subscribe →
+                Subscribe
               </button>
             </div>
-            <p className="text-xs text-ink-soft">
-              By subscribing you agree to our <a href="/privacy" className="underline decoration-accent underline-offset-2">privacy policy</a>. Unsubscribe any time.
-            </p>
+            
+            <div className="absolute -inset-0.5 bg-accent/20 blur opacity-0 group-focus-within:opacity-100 transition-opacity -z-10"></div>
           </form>
+          
+          <div className="flex flex-wrap justify-center gap-x-8 gap-y-4 text-xs font-medium text-ink-soft">
+            <div className="flex items-center gap-2">
+              <Check className="w-4 h-4 text-accent" />
+              Weekly Digest
+            </div>
+            <div className="flex items-center gap-2">
+              <Check className="w-4 h-4 text-accent" />
+              No Spam
+            </div>
+            <div className="flex items-center gap-2">
+              <Check className="w-4 h-4 text-accent" />
+              Unsubscribe Anytime
+            </div>
+          </div>
         </div>
       </Container>
     </section>

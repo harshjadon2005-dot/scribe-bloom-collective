@@ -3,11 +3,24 @@ import { useState } from "react";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { Container } from "@/components/site/Container";
 import { ArticleVertical, ArticleRow, ArticleLandscape } from "@/components/site/ArticleCard";
-import { articles, categories } from "@/data/articles";
+import { ArticleFAQ } from "@/components/site/ArticleFAQ";
 import { Newsletter } from "@/components/site/Newsletter";
 import { LayoutGrid, List } from "lucide-react";
+import { getArticles, getTopics } from "@/api";
 
-export const Route = createFileRoute("/articles")({
+const generalFaqs = [
+  { question: "Is this reporting or opinion?", answer: "Both, clearly labeled. Field reports are sourced and fact-checked; essays are argued and signed." },
+  { question: "How do you choose what to cover?", answer: "We follow the practitioners. If working engineers, researchers, and founders are quietly wrestling with a question, that is usually where the interesting story lives." },
+  { question: "Can I republish these pieces?", answer: "For non-commercial use with attribution and a link back, yes. For anything else, write to us first." },
+  { question: "How often do you publish new articles?", answer: "We publish one considered essay each week on Sundays, along with occasional field notes during the week." }
+];
+
+export const Route = createFileRoute("/articles/")({
+  loader: async () => {
+    const articles = await getArticles();
+    const categories = await getTopics();
+    return { articles, categories };
+  },
   component: ArticlesIndex,
   head: () => ({
     meta: [
@@ -21,6 +34,7 @@ export const Route = createFileRoute("/articles")({
 });
 
 function ArticlesIndex() {
+  const { articles, categories } = Route.useLoaderData();
   const [view, setView] = useState<"grid" | "list">("grid");
   const [cat, setCat] = useState<string>("all");
   const [sort, setSort] = useState<"newest" | "oldest" | "reading">("newest");
@@ -59,11 +73,11 @@ function ArticlesIndex() {
       {/* Filter bar */}
       <div className="sticky top-16 z-30 bg-background/90 backdrop-blur rule-t rule-b">
         <Container size="wide">
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-3 py-3">
-            <div className="flex flex-wrap items-center gap-1 text-sm">
+          <div className="flex flex-col xl:flex-row xl:items-center justify-between gap-4 py-3">
+            <div className="flex items-center gap-1 text-sm overflow-x-auto whitespace-nowrap flex-nowrap [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden w-full xl:w-auto xl:flex-1 xl:pr-6">
               <button
                 onClick={() => setCat("all")}
-                className={`px-3 py-1.5 rounded-full transition-colors ${cat === "all" ? "bg-foreground text-background" : "hover:bg-secondary"}`}
+                className={`px-3 py-1.5 rounded-full transition-colors flex-shrink-0 ${cat === "all" ? "bg-foreground text-background" : "hover:bg-secondary"}`}
               >
                 All
               </button>
@@ -71,13 +85,13 @@ function ArticlesIndex() {
                 <button
                   key={c.slug}
                   onClick={() => setCat(c.slug)}
-                  className={`px-3 py-1.5 rounded-full transition-colors ${cat === c.slug ? "bg-foreground text-background" : "hover:bg-secondary"}`}
+                  className={`px-3 py-1.5 rounded-full transition-colors flex-shrink-0 ${cat === c.slug ? "bg-foreground text-background" : "hover:bg-secondary"}`}
                 >
                   {c.name}
                 </button>
               ))}
             </div>
-            <div className="ml-auto flex items-center gap-4">
+            <div className="flex flex-wrap items-center justify-between xl:justify-end gap-4 shrink-0 w-full xl:w-auto">
               <select
                 value={sort}
                 onChange={(e) => setSort(e.target.value as typeof sort)}
@@ -142,6 +156,9 @@ function ArticlesIndex() {
           <Link to="/articles" className="hover:text-accent transition-colors">Next →</Link>
         </nav>
       </Container>
+
+      {/* FAQ Component */}
+      <ArticleFAQ faqs={generalFaqs} />
 
       <Newsletter />
     </SiteLayout>

@@ -5,7 +5,6 @@ import { Container } from "./Container";
 
 const nav = [
   { to: "/articles", label: "Articles" },
-  { to: "/categories", label: "Categories" },
   { to: "/trending", label: "Trending" },
   { to: "/topics", label: "Topics" },
   { to: "/authors", label: "Authors" },

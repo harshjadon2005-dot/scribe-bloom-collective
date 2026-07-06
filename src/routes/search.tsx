@@ -3,8 +3,9 @@ import { useMemo, useState } from "react";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { Container } from "@/components/site/Container";
 import { ArticleRow } from "@/components/site/ArticleCard";
-import { articles, categories } from "@/data/articles";
+import { categories } from "@/data/articles";
 import { Search as SearchIcon } from "lucide-react";
+import { getArticles } from "@/api";
 
 export const Route = createFileRoute("/search")({
   component: SearchPage,
@@ -15,11 +16,16 @@ export const Route = createFileRoute("/search")({
       { name: "robots", content: "noindex" },
     ],
   }),
+  loader: async () => {
+    const articles = await getArticles();
+    return { articles };
+  }
 });
 
 const recent = ["slow work", "typography", "morning pages"];
 
 function SearchPage() {
+  const { articles } = Route.useLoaderData();
   const [q, setQ] = useState("");
   const results = useMemo(() => {
     const t = q.trim().toLowerCase();
