@@ -16,10 +16,23 @@ export function Navbar() {
   const [dark, setDark] = useState(false);
 
   useEffect(() => {
+    // Initialize state from document class which was set by inline script in __root.tsx
+    const isDark = document.documentElement.classList.contains("dark");
+    setDark(isDark);
+  }, []);
+
+  const toggleDark = () => {
     const root = document.documentElement;
-    if (dark) root.classList.add("dark");
-    else root.classList.remove("dark");
-  }, [dark]);
+    const isDark = !dark;
+    setDark(isDark);
+    if (isDark) {
+      root.classList.add("dark");
+      localStorage.theme = "dark";
+    } else {
+      root.classList.remove("dark");
+      localStorage.theme = "light";
+    }
+  };
 
   return (
     <header className="sticky top-0 z-40 bg-background/85 backdrop-blur-md rule-b">
@@ -57,7 +70,7 @@ export function Navbar() {
               <Search className="h-4 w-4" />
             </Link>
             <button
-              onClick={() => setDark((d) => !d)}
+              onClick={toggleDark}
               aria-label="Toggle dark mode"
               className="h-9 w-9 grid place-items-center rounded-full hover:bg-secondary transition-colors"
             >
