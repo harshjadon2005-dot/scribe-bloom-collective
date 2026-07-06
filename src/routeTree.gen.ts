@@ -9,6 +9,8 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TrendingRouteImport } from './routes/trending'
+import { Route as TopicsRouteImport } from './routes/topics'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SearchRouteImport } from './routes/search'
@@ -23,6 +25,16 @@ import { Route as CategoriesSlugRouteImport } from './routes/categories.$slug'
 import { Route as AuthorsSlugRouteImport } from './routes/authors.$slug'
 import { Route as ArticlesSlugRouteImport } from './routes/articles.$slug'
 
+const TrendingRoute = TrendingRouteImport.update({
+  id: '/trending',
+  path: '/trending',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TopicsRoute = TopicsRouteImport.update({
+  id: '/topics',
+  path: '/topics',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
   path: '/terms',
@@ -100,6 +112,8 @@ export interface FileRoutesByFullPath {
   '/search': typeof SearchRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
+  '/topics': typeof TopicsRoute
+  '/trending': typeof TrendingRoute
   '/articles/$slug': typeof ArticlesSlugRoute
   '/authors/$slug': typeof AuthorsSlugRoute
   '/categories/$slug': typeof CategoriesSlugRoute
@@ -115,6 +129,8 @@ export interface FileRoutesByTo {
   '/search': typeof SearchRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
+  '/topics': typeof TopicsRoute
+  '/trending': typeof TrendingRoute
   '/articles/$slug': typeof ArticlesSlugRoute
   '/authors/$slug': typeof AuthorsSlugRoute
   '/categories/$slug': typeof CategoriesSlugRoute
@@ -131,6 +147,8 @@ export interface FileRoutesById {
   '/search': typeof SearchRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
+  '/topics': typeof TopicsRoute
+  '/trending': typeof TrendingRoute
   '/articles/$slug': typeof ArticlesSlugRoute
   '/authors/$slug': typeof AuthorsSlugRoute
   '/categories/$slug': typeof CategoriesSlugRoute
@@ -148,6 +166,8 @@ export interface FileRouteTypes {
     | '/search'
     | '/sitemap.xml'
     | '/terms'
+    | '/topics'
+    | '/trending'
     | '/articles/$slug'
     | '/authors/$slug'
     | '/categories/$slug'
@@ -163,6 +183,8 @@ export interface FileRouteTypes {
     | '/search'
     | '/sitemap.xml'
     | '/terms'
+    | '/topics'
+    | '/trending'
     | '/articles/$slug'
     | '/authors/$slug'
     | '/categories/$slug'
@@ -178,6 +200,8 @@ export interface FileRouteTypes {
     | '/search'
     | '/sitemap.xml'
     | '/terms'
+    | '/topics'
+    | '/trending'
     | '/articles/$slug'
     | '/authors/$slug'
     | '/categories/$slug'
@@ -194,10 +218,26 @@ export interface RootRouteChildren {
   SearchRoute: typeof SearchRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TermsRoute: typeof TermsRoute
+  TopicsRoute: typeof TopicsRoute
+  TrendingRoute: typeof TrendingRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/trending': {
+      id: '/trending'
+      path: '/trending'
+      fullPath: '/trending'
+      preLoaderRoute: typeof TrendingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/topics': {
+      id: '/topics'
+      path: '/topics'
+      fullPath: '/topics'
+      preLoaderRoute: typeof TopicsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/terms': {
       id: '/terms'
       path: '/terms'
@@ -338,6 +378,8 @@ const rootRouteChildren: RootRouteChildren = {
   SearchRoute: SearchRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TermsRoute: TermsRoute,
+  TopicsRoute: TopicsRoute,
+  TrendingRoute: TrendingRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
