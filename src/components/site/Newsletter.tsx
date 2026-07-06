@@ -8,10 +8,10 @@ export function Newsletter({ compact = false }: { compact?: boolean }) {
           <div className="md:col-span-7">
             <div className="eyebrow mb-4">The Dispatch</div>
             <h3 className="font-display text-4xl sm:text-5xl leading-[1.05] tracking-tight max-w-xl">
-              A slow letter, delivered on Sundays.
+              The week in technology, explained on Sundays.
             </h3>
             <p className="mt-5 text-ink-soft max-w-lg leading-relaxed">
-              One considered essay each week, plus three things worth reading. No tracking, no ads, no obligation. Twenty-eight thousand quiet readers already inside.
+              One considered essay each week, plus five stories worth your attention across AI, engineering, and startups. No tracking, no ads, no obligation. Forty-two thousand builders already inside.
             </p>
           </div>
           <form
@@ -24,7 +24,7 @@ export function Newsletter({ compact = false }: { compact?: boolean }) {
                 id="nl"
                 type="email"
                 required
-                placeholder="you@somewhere.com"
+                placeholder="you@company.com"
                 className="flex-1 bg-transparent py-3 text-lg outline-none placeholder:text-ink-soft/60"
               />
               <button

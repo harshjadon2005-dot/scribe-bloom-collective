@@ -247,9 +247,9 @@ function ArticlePage() {
                 <h2>Frequently asked</h2>
                 <div className="not-prose divide-y divide-border rule-t rule-b">
                   {[
-                    ["How long should the middle actually take?", "As long as the work demands and no longer. There is no correct number of drafts, only a correct feeling in the room."],
-                    ["Is this a productivity essay?", "No. It is a permission slip."],
-                    ["What notebook do you use?", "Whatever is closest. The ritual matters; the object does not."],
+                    ["Is this reporting or opinion?", "Both, clearly labeled. Field reports are sourced and fact-checked; essays are argued and signed."],
+                    ["How do you choose what to cover?", "We follow the practitioners. If working engineers, researchers, and founders are quietly wrestling with a question, that is usually where the interesting story lives."],
+                    ["Can I republish this piece?", "For non-commercial use with attribution and a link back, yes. For anything else, write to us first."],
                   ].map(([q, a], i) => (
                     <details key={i} className="group py-5">
                       <summary className="flex items-center justify-between cursor-pointer list-none">

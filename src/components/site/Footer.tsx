@@ -10,7 +10,7 @@ export function Footer() {
           <div className="col-span-2 md:col-span-4">
             <div className="font-display text-3xl font-medium leading-none">Lordiphosa</div>
             <p className="mt-4 text-sm text-ink-soft max-w-xs leading-relaxed">
-              A publication for the curious. Longform essays, guides, and field notes on design, technology, and the craft of building things that last.
+              A modern knowledge publication. Considered reporting on AI, engineering, cybersecurity, startups, and the technology reshaping the next decade.
             </p>
           </div>
 
@@ -18,8 +18,9 @@ export function Footer() {
             title="Read"
             links={[
               { to: "/articles", label: "All Articles" },
+              { to: "/trending", label: "Trending" },
               { to: "/categories", label: "Categories" },
-              { to: "/authors", label: "Authors" },
+              { to: "/topics", label: "Topics" },
               { to: "/search", label: "Search" },
             ]}
           />
@@ -27,9 +28,9 @@ export function Footer() {
             title="Publication"
             links={[
               { to: "/about", label: "About" },
+              { to: "/authors", label: "Authors" },
               { to: "/contact", label: "Contact" },
               { to: "/about", label: "Masthead" },
-              { to: "/about", label: "Submissions" },
             ]}
           />
           <FooterCol
@@ -37,13 +38,14 @@ export function Footer() {
             links={[
               { to: "/privacy", label: "Privacy" },
               { to: "/terms", label: "Terms" },
-              { to: "/contact", label: "Ethics" },
+              { to: "/contact", label: "Editorial Ethics" },
             ]}
           />
           <FooterCol
             title="Elsewhere"
             links={[
-              { to: "/", label: "Twitter", external: true },
+              { to: "/", label: "Twitter / X", external: true },
+              { to: "/", label: "LinkedIn", external: true },
               { to: "/", label: "RSS", external: true },
               { to: "/", label: "Newsletter", external: true },
             ]}
@@ -52,7 +54,7 @@ export function Footer() {
 
         <div className="mt-16 pt-6 rule-t flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-ink-soft">
           <div>© {year} Lordiphosa. All rights reserved.</div>
-          <div className="font-mono">Printed with care on the open web.</div>
+          <div className="font-mono">Independent technology journalism.</div>
         </div>
       </Container>
     </footer>

@@ -6,6 +6,8 @@ import { Container } from "./Container";
 const nav = [
   { to: "/articles", label: "Articles" },
   { to: "/categories", label: "Categories" },
+  { to: "/trending", label: "Trending" },
+  { to: "/topics", label: "Topics" },
   { to: "/authors", label: "Authors" },
   { to: "/about", label: "About" },
 ];
@@ -29,11 +31,11 @@ export function Navbar() {
               Lordiphosa
             </span>
             <span className="hidden sm:inline text-[10px] uppercase tracking-[0.2em] text-ink-soft">
-              Est. MMXXVI
+              Modern Knowledge
             </span>
           </Link>
 
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-7">
             {nav.map((n) => (
               <Link
                 key={n.to}
