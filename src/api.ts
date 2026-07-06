@@ -6,6 +6,10 @@ import { z } from 'zod';
 // ARTICLES ENDPOINTS
 // ==========================================
 
+const postFiles = import.meta.glob('@/data/posts/*.json', { eager: true, import: 'default' });
+const dynamicArticles = Object.values(postFiles) as Article[];
+const allCombinedArticles = [...articles, ...dynamicArticles];
+
 export const getArticles = createServerFn({ method: 'GET' })
   .validator(z.object({
     limit: z.number().optional(),
@@ -18,7 +22,7 @@ export const getArticles = createServerFn({ method: 'GET' })
     excludeSlug: z.string().optional()
   }).optional())
   .handler(async ({ data }) => {
-    let result = [...articles];
+    let result = [...allCombinedArticles];
 
     if (!data) return result;
 
@@ -63,15 +67,15 @@ export const getArticles = createServerFn({ method: 'GET' })
 export const getArticleBySlug = createServerFn({ method: 'GET' })
   .validator(z.object({ slug: z.string() }))
   .handler(async ({ data }) => {
-    const article = articles.find(a => a.slug === data.slug);
+    const article = allCombinedArticles.find(a => a.slug === data.slug);
     if (!article) throw new Error('Article not found');
     return article;
   });
 
 export const getFeaturedArticle = createServerFn({ method: 'GET' })
   .handler(async () => {
-    const article = articles.find(a => a.featured);
-    return article || articles[0];
+    const article = allCombinedArticles.find(a => a.featured);
+    return article || allCombinedArticles[0];
   });
 
 
