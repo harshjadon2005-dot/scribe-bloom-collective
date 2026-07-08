@@ -12,6 +12,7 @@ import {
 import { TrendingUp, Flame, BookOpen, Compass, PenTool } from "lucide-react";
 import { getArticles, getFeaturedArticle, getAuthors, getTopics } from "@/api";
 import { popularTopics } from "@/data/articles"; // keeping static popular topics for now or we could move it
+import { formatDistanceToNow } from "date-fns";
 
 export const Route = createFileRoute("/")({
   loader: async () => {
@@ -179,21 +180,18 @@ function Index() {
               <h3 className="font-display font-medium text-lg">Trending Today</h3>
             </div>
             <ul className="space-y-3">
-              {[
-                "AI Agents",
-                "Quantum Computing",
-                "Cybersecurity",
-                "Semiconductors",
-                "Startups",
-                "Cloud Computing",
-              ].map((topic, i) => (
-                <li key={i}>
+              {allArticles
+                .filter((a) => a.trending)
+                .slice(0, 6)
+                .map((article) => (
+                <li key={article.slug}>
                   <Link
-                    to="/search"
-                    className="text-sm text-ink-soft hover:text-foreground relative group inline-flex items-center gap-2"
+                    to="/articles/$slug"
+                    params={{ slug: article.slug }}
+                    className="text-sm text-ink-soft hover:text-foreground relative group flex items-start gap-2"
                   >
-                    <span className="w-1 h-1 rounded-full bg-border group-hover:bg-accent transition-colors" />
-                    {topic}
+                    <span className="w-1 h-1 rounded-full bg-border group-hover:bg-accent transition-colors shrink-0 mt-2" />
+                    <span className="line-clamp-2">{article.title}</span>
                     <span className="absolute -bottom-0.5 left-3 right-0 h-px bg-accent scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300" />
                   </Link>
                 </li>
@@ -225,7 +223,7 @@ function Index() {
             </div>
             <div className="mt-6 text-[10px] uppercase tracking-widest text-ink-soft flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-emerald-500/80 animate-pulse" />
-              Updated 12 mins ago
+              Updated {latest[0] ? formatDistanceToNow(new Date(latest[0].publishedAt), { addSuffix: true }) : 'recently'}
             </div>
           </div>
 
