@@ -196,17 +196,6 @@ export function Footer() {
           <div className="pt-8 border-t border-background/20 flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-background/50">
             <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-6">
               <span>© {year} Lordiphosa</span>
-              <span className="hidden sm:inline w-1 h-1 rounded-full bg-background/30"></span>
-              <span>Independent Technology Publication</span>
-            </div>
-            
-            <div className="flex items-center gap-6 font-mono">
-              <span>Version 1.0</span>
-              <span className="hidden sm:inline text-background/30">|</span>
-              <span className="hidden sm:inline">Last Updated</span>
-              <span className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-accent animate-pulse"></span> All Systems Operational
-              </span>
             </div>
 
             <div className="flex items-center gap-6 font-medium text-background/70">

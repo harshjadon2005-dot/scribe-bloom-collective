@@ -1,0 +1,27 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Rules for the newsletter subscribers collection
+    match /subscribers/{subscriberId} {
+      // Anyone can add their email to the newsletter
+      allow create: if request.resource.data.keys().hasAll([
+                      'email', 'status', 'verified', 'verificationToken', 
+                      'subscribedAt', 'verifiedAt', 'lastEmailSent', 
+                      'unsubscribeToken', 'source', 'preferredTopics', 
+                      'newsletterFrequency', 'consent'
+                    ]) 
+                    && request.resource.data.email is string;
+      
+      // Allow checking if a specific email exists to prevent duplicates, but prevent listing all subscribers
+      allow get: if true;
+      allow list, update, delete: if false;
+    }
+
+    // Default deny for everything else
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

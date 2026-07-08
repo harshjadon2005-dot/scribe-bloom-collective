@@ -1,7 +1,58 @@
+import { useState } from "react";
 import { Container } from "./Container";
-import { Check } from "lucide-react";
+import { Check, Loader2 } from "lucide-react";
+import { doc, getDoc, setDoc, serverTimestamp } from "firebase/firestore";
+import { db } from "@/lib/firebase";
+import { toast } from "sonner";
 
 export function Newsletter({ compact = false }: { compact?: boolean }) {
+  const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+
+    setLoading(true);
+    try {
+      const emailLower = email.toLowerCase();
+      const subscriberRef = doc(db, "subscribers", emailLower);
+      const subscriberDoc = await getDoc(subscriberRef);
+
+      if (subscriberDoc.exists()) {
+        toast.error("This email is already subscribed.");
+        setLoading(false);
+        return;
+      }
+
+      // Generate random tokens for verification and unsubscribe links
+      const verificationToken = crypto.randomUUID();
+      const unsubscribeToken = crypto.randomUUID();
+
+      await setDoc(subscriberRef, {
+        email: emailLower,
+        status: "pending",
+        verified: false,
+        verificationToken,
+        subscribedAt: serverTimestamp(),
+        verifiedAt: null,
+        lastEmailSent: null,
+        unsubscribeToken,
+        source: "footer", // Or whichever source is appropriate
+        preferredTopics: [],
+        newsletterFrequency: "weekly",
+        consent: true
+      });
+      toast.success("Successfully subscribed to the newsletter!");
+      setEmail("");
+    } catch (error) {
+      console.error("Error subscribing:", error);
+      toast.error("Failed to subscribe. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <section className={`bg-secondary/30 border-y border-border ${compact ? "" : "mt-24"}`}>
       <Container size={compact ? "default" : "wide"}>
@@ -15,7 +66,7 @@ export function Newsletter({ compact = false }: { compact?: boolean }) {
           </p>
           
           <form
-            onSubmit={(e) => e.preventDefault()}
+            onSubmit={handleSubmit}
             className="w-full max-w-lg mb-8 relative group"
           >
             <label htmlFor="nl-email" className="sr-only">Email address</label>
@@ -24,14 +75,18 @@ export function Newsletter({ compact = false }: { compact?: boolean }) {
                 id="nl-email"
                 type="email"
                 required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email address"
-                className="w-full bg-background border border-border rounded-none py-4 pl-6 pr-32 text-lg focus:outline-none focus:border-accent transition-colors shadow-sm placeholder:text-ink-soft/50"
+                disabled={loading}
+                className="w-full bg-background border border-border rounded-none py-4 pl-6 pr-32 text-lg focus:outline-none focus:border-accent transition-colors shadow-sm placeholder:text-ink-soft/50 disabled:opacity-50"
               />
               <button
                 type="submit"
-                className="absolute right-2 top-2 bottom-2 bg-foreground text-background font-medium px-6 text-sm hover:bg-accent transition-colors"
+                disabled={loading}
+                className="absolute right-2 top-2 bottom-2 bg-foreground text-background font-medium px-6 text-sm hover:bg-accent transition-colors disabled:opacity-50 flex items-center justify-center min-w-[110px]"
               >
-                Subscribe
+                {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : "Subscribe"}
               </button>
             </div>
             

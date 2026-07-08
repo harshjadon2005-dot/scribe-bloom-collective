@@ -31,9 +31,11 @@ import { Route as AccessibilityRouteImport } from './routes/accessibility'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as TopicsIndexRouteImport } from './routes/topics.index'
+import { Route as CollectionsIndexRouteImport } from './routes/collections.index'
 import { Route as AuthorsIndexRouteImport } from './routes/authors.index'
 import { Route as ArticlesIndexRouteImport } from './routes/articles.index'
 import { Route as TopicsSlugRouteImport } from './routes/topics.$slug'
+import { Route as CollectionsSlugRouteImport } from './routes/collections.$slug'
 import { Route as CategoriesSlugRouteImport } from './routes/categories.$slug'
 import { Route as AuthorsSlugRouteImport } from './routes/authors.$slug'
 import { Route as ArticlesSlugRouteImport } from './routes/articles.$slug'
@@ -148,6 +150,11 @@ const TopicsIndexRoute = TopicsIndexRouteImport.update({
   path: '/topics/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CollectionsIndexRoute = CollectionsIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => CollectionsRoute,
+} as any)
 const AuthorsIndexRoute = AuthorsIndexRouteImport.update({
   id: '/authors/',
   path: '/authors/',
@@ -162,6 +169,11 @@ const TopicsSlugRoute = TopicsSlugRouteImport.update({
   id: '/topics/$slug',
   path: '/topics/$slug',
   getParentRoute: () => rootRouteImport,
+} as any)
+const CollectionsSlugRoute = CollectionsSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => CollectionsRoute,
 } as any)
 const CategoriesSlugRoute = CategoriesSlugRouteImport.update({
   id: '/categories/$slug',
@@ -186,7 +198,7 @@ export interface FileRoutesByFullPath {
   '/archive': typeof ArchiveRoute
   '/careers': typeof CareersRoute
   '/changelog': typeof ChangelogRoute
-  '/collections': typeof CollectionsRoute
+  '/collections': typeof CollectionsRouteWithChildren
   '/contact': typeof ContactRoute
   '/credits': typeof CreditsRoute
   '/editorial-standards': typeof EditorialStandardsRoute
@@ -204,9 +216,11 @@ export interface FileRoutesByFullPath {
   '/articles/$slug': typeof ArticlesSlugRoute
   '/authors/$slug': typeof AuthorsSlugRoute
   '/categories/$slug': typeof CategoriesSlugRoute
+  '/collections/$slug': typeof CollectionsSlugRoute
   '/topics/$slug': typeof TopicsSlugRoute
   '/articles/': typeof ArticlesIndexRoute
   '/authors/': typeof AuthorsIndexRoute
+  '/collections/': typeof CollectionsIndexRoute
   '/topics/': typeof TopicsIndexRoute
 }
 export interface FileRoutesByTo {
@@ -216,7 +230,6 @@ export interface FileRoutesByTo {
   '/archive': typeof ArchiveRoute
   '/careers': typeof CareersRoute
   '/changelog': typeof ChangelogRoute
-  '/collections': typeof CollectionsRoute
   '/contact': typeof ContactRoute
   '/credits': typeof CreditsRoute
   '/editorial-standards': typeof EditorialStandardsRoute
@@ -234,9 +247,11 @@ export interface FileRoutesByTo {
   '/articles/$slug': typeof ArticlesSlugRoute
   '/authors/$slug': typeof AuthorsSlugRoute
   '/categories/$slug': typeof CategoriesSlugRoute
+  '/collections/$slug': typeof CollectionsSlugRoute
   '/topics/$slug': typeof TopicsSlugRoute
   '/articles': typeof ArticlesIndexRoute
   '/authors': typeof AuthorsIndexRoute
+  '/collections': typeof CollectionsIndexRoute
   '/topics': typeof TopicsIndexRoute
 }
 export interface FileRoutesById {
@@ -247,7 +262,7 @@ export interface FileRoutesById {
   '/archive': typeof ArchiveRoute
   '/careers': typeof CareersRoute
   '/changelog': typeof ChangelogRoute
-  '/collections': typeof CollectionsRoute
+  '/collections': typeof CollectionsRouteWithChildren
   '/contact': typeof ContactRoute
   '/credits': typeof CreditsRoute
   '/editorial-standards': typeof EditorialStandardsRoute
@@ -265,9 +280,11 @@ export interface FileRoutesById {
   '/articles/$slug': typeof ArticlesSlugRoute
   '/authors/$slug': typeof AuthorsSlugRoute
   '/categories/$slug': typeof CategoriesSlugRoute
+  '/collections/$slug': typeof CollectionsSlugRoute
   '/topics/$slug': typeof TopicsSlugRoute
   '/articles/': typeof ArticlesIndexRoute
   '/authors/': typeof AuthorsIndexRoute
+  '/collections/': typeof CollectionsIndexRoute
   '/topics/': typeof TopicsIndexRoute
 }
 export interface FileRouteTypes {
@@ -297,9 +314,11 @@ export interface FileRouteTypes {
     | '/articles/$slug'
     | '/authors/$slug'
     | '/categories/$slug'
+    | '/collections/$slug'
     | '/topics/$slug'
     | '/articles/'
     | '/authors/'
+    | '/collections/'
     | '/topics/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -309,7 +328,6 @@ export interface FileRouteTypes {
     | '/archive'
     | '/careers'
     | '/changelog'
-    | '/collections'
     | '/contact'
     | '/credits'
     | '/editorial-standards'
@@ -327,9 +345,11 @@ export interface FileRouteTypes {
     | '/articles/$slug'
     | '/authors/$slug'
     | '/categories/$slug'
+    | '/collections/$slug'
     | '/topics/$slug'
     | '/articles'
     | '/authors'
+    | '/collections'
     | '/topics'
   id:
     | '__root__'
@@ -357,9 +377,11 @@ export interface FileRouteTypes {
     | '/articles/$slug'
     | '/authors/$slug'
     | '/categories/$slug'
+    | '/collections/$slug'
     | '/topics/$slug'
     | '/articles/'
     | '/authors/'
+    | '/collections/'
     | '/topics/'
   fileRoutesById: FileRoutesById
 }
@@ -370,7 +392,7 @@ export interface RootRouteChildren {
   ArchiveRoute: typeof ArchiveRoute
   CareersRoute: typeof CareersRoute
   ChangelogRoute: typeof ChangelogRoute
-  CollectionsRoute: typeof CollectionsRoute
+  CollectionsRoute: typeof CollectionsRouteWithChildren
   ContactRoute: typeof ContactRoute
   CreditsRoute: typeof CreditsRoute
   EditorialStandardsRoute: typeof EditorialStandardsRoute
@@ -550,6 +572,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TopicsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/collections/': {
+      id: '/collections/'
+      path: '/'
+      fullPath: '/collections/'
+      preLoaderRoute: typeof CollectionsIndexRouteImport
+      parentRoute: typeof CollectionsRoute
+    }
     '/authors/': {
       id: '/authors/'
       path: '/authors'
@@ -570,6 +599,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/topics/$slug'
       preLoaderRoute: typeof TopicsSlugRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/collections/$slug': {
+      id: '/collections/$slug'
+      path: '/$slug'
+      fullPath: '/collections/$slug'
+      preLoaderRoute: typeof CollectionsSlugRouteImport
+      parentRoute: typeof CollectionsRoute
     }
     '/categories/$slug': {
       id: '/categories/$slug'
@@ -595,6 +631,20 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface CollectionsRouteChildren {
+  CollectionsSlugRoute: typeof CollectionsSlugRoute
+  CollectionsIndexRoute: typeof CollectionsIndexRoute
+}
+
+const CollectionsRouteChildren: CollectionsRouteChildren = {
+  CollectionsSlugRoute: CollectionsSlugRoute,
+  CollectionsIndexRoute: CollectionsIndexRoute,
+}
+
+const CollectionsRouteWithChildren = CollectionsRoute._addFileChildren(
+  CollectionsRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
@@ -602,7 +652,7 @@ const rootRouteChildren: RootRouteChildren = {
   ArchiveRoute: ArchiveRoute,
   CareersRoute: CareersRoute,
   ChangelogRoute: ChangelogRoute,
-  CollectionsRoute: CollectionsRoute,
+  CollectionsRoute: CollectionsRouteWithChildren,
   ContactRoute: ContactRoute,
   CreditsRoute: CreditsRoute,
   EditorialStandardsRoute: EditorialStandardsRoute,

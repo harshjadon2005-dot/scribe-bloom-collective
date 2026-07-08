@@ -247,8 +247,10 @@ function Topics() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {popularCollections.map((c) => (
-            <div
+            <Link
               key={c.slug}
+              to="/collections/$slug"
+              params={{ slug: c.slug }}
               className="group block relative overflow-hidden bg-background border border-border hover:-translate-y-1 hover:shadow-lg transition-all duration-300"
             >
               <div className="h-48 overflow-hidden bg-secondary border-b border-border">
@@ -272,7 +274,7 @@ function Topics() {
                   <ChevronRight className="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" />
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </Container>
@@ -473,8 +475,10 @@ function Topics() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {editorCollections.map((c) => (
-              <div
+              <Link
                 key={c.slug}
+                to="/collections/$slug"
+                params={{ slug: c.slug }}
                 className="group block relative overflow-hidden bg-background border border-border hover:-translate-y-1 hover:shadow-lg transition-all duration-300"
               >
                 <div className="h-56 overflow-hidden bg-secondary border-b border-border">
@@ -493,7 +497,7 @@ function Topics() {
                     {c.articleCount} Articles
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </Container>

@@ -483,3 +483,7 @@ export const trendingTechnologies = [
 export function formatDate(iso: string) {
   return new Date(iso).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" });
 }
+
+export function getCollection(slug: string) {
+  return collections.find((c) => c.slug === slug);
+}
